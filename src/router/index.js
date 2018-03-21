@@ -5,6 +5,8 @@ import Msite from '../pages/Msite/Msite.vue'
 import Classification from '../pages/Classification/Classification.vue'
 import Cart from '../pages/Cart/Cart.vue'
 import Myself from '../pages/Myself/Myself.vue'
+import Types from '../components/Types/Types.vue'
+import Brands from '../components/Brands/Brands.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +23,21 @@ export default new VueRouter({
     },
     {
       path: '/classification',
-      component: Classification
+      component: Classification,
+      children:[
+        {
+          path: '/',
+          redirect: '/classification/types'
+        },
+        {
+          path: 'types',
+          component: Types
+        },
+        {
+          path: 'brands',
+          component: Brands
+        },
+      ]
     },
     {
       path: '/cart',
