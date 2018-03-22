@@ -23,6 +23,12 @@ time, mark, audio, video, input {
   vertical-align: baseline;
 }
 
+img{
+  display: block;
+}
+
+
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, menu, nav, section {

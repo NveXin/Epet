@@ -7,6 +7,8 @@ import Cart from '../pages/Cart/Cart.vue'
 import Myself from '../pages/Myself/Myself.vue'
 import Types from '../components/Types/Types.vue'
 import Brands from '../components/Brands/Brands.vue'
+import Login from '../components/Login/Login.vue'
+import Register from '../components/Register/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -45,7 +47,18 @@ export default new VueRouter({
     },
     {
       path: '/myself',
-      component: Myself
+      component: Myself,
+      children:[
+        {path: '/',
+          redirect: '/myself/login'
+        },
+        {path: 'login',
+          component: Login
+        },
+        {path: 'register',
+          component: Register
+        }
+      ]
     },
   ]
 })
