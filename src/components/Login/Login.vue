@@ -20,10 +20,11 @@
     outline none
   .lfrom
     width 333px
-    height 100%
+    height 92px
     position relative
     top -490px
     margin 0 auto
+    border-box border-b
     li
       width 333px
       height 46px

@@ -1,142 +1,60 @@
 <template>
   <div class="container">
-    <div class="wrapper">
+    <div class="wrapper" v-for="(all, index) in brand" :key="index">
       <div class="top">
-        <span>—— 推荐品牌 ——</span>
+        <span>——{{all.title}}——</span>
       </div>
       <div class="bottom">
         <ul class="list">
-          <li>
+          <li v-for="(item, index) in all.list" :key="index">
             <a href="javascript:;">
               <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
+                <img :src="item.logo" alt="">
               </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <div class="moreimg">
-                <img src="https://img2.epetbar.com/nowater/brand_logo/2016-09/28/10/3b236d1731bd91004bffcec3515e1a0a.jpg?x-oss-process=style/waterfall&$1=200" alt="">
-              </div>
-              <p class="name">冠能</p>
-              <p class="address">美国</p>
+              <p class="name">{{item.name}}</p>
+              <p class="address">{{item.address}}</p>
             </a>
           </li>
         </ul>
       </div>
     </div>
-    <a href="javascript:;">全部</a>
+    <a class="all" href="javascript:;" @click="goto('/all')">全部</a>
+    <router-view/>
   </div>
 </template>
 
 <script>
-  export default {}
+  import {mapState} from 'vuex'
+  export default {
+    methods:{
+      goto(path){
+        this.$router.replace(path)
+      }
+    },
+    computed: {
+      ...mapState(['brand'])
+    },
+    mounted(){
+      this.$store.dispatch('getBrand')
+    }
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
   .container
     background-color lightgray
+    .all
+      position fixed
+      right 6px
+      bottom 65px
+      display block
+      width 40px
+      line-height 40px
+      border-radius 50%
+      background rgba(0,0,0,.4)
+      text-align center
+      font-size 12px
+      color white
     .wrapper
       width 375px
       height 667px

@@ -1,5 +1,6 @@
 <template>
   <div class="msite">
+    <!--{{homepage}}-->
     <div class="indexbox">
       <!-- 搜索框 -->
       <div class="indexheader">
@@ -24,14 +25,9 @@
         </div>
         <div class="swiperList">
           <div class="swiper-container-one">
-            <div class="swiper-wrapper" style="display: flex; justify-content: flex-start">
-              <div class="swiper-slide" style="margin-left: 20px;">首页</div>
-              <div class="swiper-slide">狗狗主粮</div>
-              <div class="swiper-slide">服饰城</div>
-              <div class="swiper-slide">医疗保健</div>
-              <div class="swiper-slide">零食玩具</div>
-              <div class="swiper-slide">日用外出</div>
-              <div class="swiper-slide">美容香波</div>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" style="margin-left: 20px;"  v-for="(type, index) in homepage.menus" :key="index">
+                {{type.menu_name}}</div>
             </div>
           </div>
         </div>
@@ -40,11 +36,9 @@
       <div class="lunbo">
         <div class="swiper-container-two">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img style="width: 375px; height: 160px;" src="./images/lunbo1.jpg" alt=""></div>
-            <div class="swiper-slide"><img style="width: 375px; height: 160px;" src="./images/lunbo2.jpg" alt=""></div>
-            <div class="swiper-slide"><img style="width: 375px; height: 160px;" src="./images/lunbo3.jpg" alt=""></div>
-            <div class="swiper-slide"><img style="width: 375px; height: 160px;" src="./images/lunbo4.jpg" alt=""></div>
-            <div class="swiper-slide"><img style="width: 375px; height: 160px;" src="./images/lunbo5.jpg" alt=""></div>
+            <div class="swiper-slide"  v-for="(url,index) in homepage.dog_banner">
+              <img :src="url" alt="" :key="index">
+            </div>
           </div>
           <!-- Add Pagination -->
           <div class="swiper-pagination swiper-pagination-bullets">
@@ -61,16 +55,7 @@
       <!-- 轮播下面的分类列表 -->
       <div class="denlei">
         <ul class="hottype">
-          <li><a href="javascript:;"><img src="./images/clear1.jpg" alt=""></a></li>
-          <li><a href="javascript:;"><img src="./images/clear2.jpg" alt=""></a></li>
-          <li><a href="javascript:;"><img src="./images/clear3.jpg" alt=""></a></li>
-          <li><a href="javascript:;"><img src="./images/clear4.jpg" alt=""></a></li>
-          <li><a href="javascript:;"><img src="./images/clear5.jpg" alt=""></a></li>
-          <li><a href="javascript:;"><img src="./images/clear6.jpg" alt=""></a></li>
-          <li><a href="javascript:;"><img src="./images/clear7.jpg" alt=""></a></li>
-          <li><a href="javascript:;"><img src="./images/clear8.jpg" alt=""></a></li>
-          <li><a href="javascript:;"><img src="./images/clear9.jpg" alt=""></a></li>
-          <li><a href="javascript:;"><img src="./images/clear10.jpg" alt=""></a></li>
+          <li v-for="(url, index) in homepage.menu_list"><a href="javascript:;"><img :src="url" alt="" :key="index"></a></li>
         </ul>
       </div>
       <!-- 专享 -->
@@ -254,28 +239,38 @@
 
 <script>
   import Swiper from 'swiper'
+  import {mapState} from 'vuex'
 
   export default {
+    props: {
+      homepage1: String
+    },
     mounted(){
-      const swiper1 = new Swiper('.swiper-container-one', {
-        slidesPerView: 4,
-        spaceBetween: 15
-      });
-      const swiper2 = new Swiper('.swiper-container-two', {
-        loop: true,
-        autoplay: {
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-          dynamicMainBullets: 5
-        },
-      });
-      const swiper3 = new Swiper('.swiper-container-three', {
-        slidesPerView: 4,
-        spaceBetween: 30,
-      });
+        this.$store.dispatch('getHomepage',()=>{
+          this.$nextTick(()=>{ //改变之后调用 action 里面那个函数 cb()
+            const swiper1 = new Swiper('.swiper-container-one', {
+              slidesPerView: 4
+            });
+            const swiper2 = new Swiper('.swiper-container-two', {
+              loop: true,
+              autoplay: {
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicMainBullets: 5
+              },
+            });
+            const swiper3 = new Swiper('.swiper-container-three', {
+              slidesPerView: 4,
+              spaceBetween: 30,
+            });
+          });
+        })
+    },
+    computed: {
+      ...mapState(['homepage'])
     }
   }
 </script>
@@ -283,7 +278,7 @@
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixins.styl"
   body
-    /*background lightgray*/
+    overflow-x hidden
     .msite
       width 100%
       height 100%
@@ -359,6 +354,15 @@
             width 100%
             height 36px
             line-height 36px
+            .swiper-container-one
+              width 100%
+              height 36px
+              .swiper-wrapper
+                width 100%
+                height 36px
+                .swiper-slide
+                  width 76px
+                  font-size 14px
       .lunbo    //轮播
         .swiper-container-two
           width 100%
@@ -372,6 +376,12 @@
           .swiper-wrapper
             position: relative;
             z-index: 1;
+            .swiper-slide
+              width 100%
+              height 160px
+              img
+                width 100%
+                height 160px
             .swiper-pagination
                 position absolute
                 text-align center
@@ -511,10 +521,10 @@
                 height 55px
       .huanshi  //缓食
         width 375px
-        height 269px
+        height 211px
         a
           width 375px
-          height 269px
+          height 211px
           img
             width 375px
             height 210px
@@ -577,7 +587,7 @@
 
       .chaohuo //潮货
         width 100%
-        height 235px
+        height 211px
         a
           img
             width 100%

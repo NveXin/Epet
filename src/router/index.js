@@ -9,6 +9,7 @@ import Types from '../components/Types/Types.vue'
 import Brands from '../components/Brands/Brands.vue'
 import Login from '../components/Login/Login.vue'
 import Register from '../components/Register/Register.vue'
+import All from '../components/All/All.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +22,7 @@ export default new VueRouter({
     },
     {
       path: '/msite',
-      component: Msite
+      component: Msite,
     },
     {
       path: '/classification',
@@ -59,6 +60,10 @@ export default new VueRouter({
           component: Register
         }
       ]
+    },
+    {
+      path: '/all',
+      component: All
     },
   ]
 })

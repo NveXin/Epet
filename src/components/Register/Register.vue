@@ -57,11 +57,14 @@
       height 46px
       a
         position absolute
+        right 0
+        top 6px
         display block
         width 100px
         line-height 29px
         border 1px solid red
         color red
-        font-size 10px
+        font-size 12px
         text-align center
+        border-radius 3px
 </style>
